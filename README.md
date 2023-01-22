@@ -4,7 +4,7 @@
 
 | Column             | Type    | Options                  |
 | ------------------ | ------- | ------------------------ |
-| name               | string  | null: false              |
+| nickname           | string  | null: false              |
 | email              | string  | null: false, unique:true |
 | encrypted_password | string  | null: false              |
 | last_name          | string  | null: false              |
@@ -15,9 +15,8 @@
 
 ### Association
 
-- has_many :purchases
 - has_many :items
-- has_many :buyers
+- has_many :historys
 - belongs_to_active_hash :birth_id
 
 ## items テーブル
@@ -32,19 +31,18 @@
 | postage_type_id    | integer    | null: false |
 | prefecture_id      | integer    | null: false |
 | preparation_day_id | integer    | null: false |
-| user               | references | null: false |
 
 ### Association
 
-- has_many :purchases
 - belongs_to :user
+- belongs_to :historye
 - belongs_to_active_hash :category_id
 - belongs_to_active_hash :condition_id
 - belongs_to_active_hash :postage_type_id
 - belongs_to_active_hash :prefectures_id
 - belongs_to_active_hash :preparation_day_id
 
-## purchases テーブル
+## historys テーブル
 
 | Column  | Type       | Options     |
 | ------- | ---------- | ----------- |
@@ -53,8 +51,8 @@
 
 ### Association
 
-- belongs_to :user
-- belongs_to :item
+- belongs_to :user_id
+- belongs_to :item_id
 
 ## shipping_datas テーブル
 
@@ -66,9 +64,8 @@
 | address       | string     | null: false |
 | building      | string     |             |
 | telephone     | string     | null: false |
-| user          | references | null: false |
-| item          | references | null: false |
+
 ### Association
 
-- belongs_to :user
-- belongs_to_active_hash :prefecture_id
+- belongs_to :history
+- belongs_to_active_hash :prefectures_id
