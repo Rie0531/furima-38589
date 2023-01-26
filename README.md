@@ -17,7 +17,7 @@
 
 - has_many :items
 - has_many :historys
-- belongs_to_active_hash :birthday
+
 ## items テーブル
 
 | Column             | Type       | Options     |
@@ -35,7 +35,7 @@
 ### Association
 
 - belongs_to :user
-- belongs_to :history
+- has_one :history
 - belongs_to_active_hash :category_id
 - belongs_to_active_hash :condition_id
 - belongs_to_active_hash :postage_type_id
@@ -48,13 +48,12 @@
 | ------------- | ---------- | ------------------------------ |
 | user          | references | null: false, foreign_key: true |
 | item          | references | null: false, foreign_key: true |
-| shipping_data | references | null: false, foreign_key: true | 
 
 ### Association
 
 - belongs_to :user
 - belongs_to :item
-- belongs_to :shipping_data
+- has_one :shipping_data
 
 ## shipping_datas テーブル
 
