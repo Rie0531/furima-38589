@@ -27,9 +27,9 @@
 | explanation        | text       | null: false |
 | category_id        | integer    | null: false |
 | condition_id       | integer    | null: false |
-| postage_type_id    | integer    | null: false |
+| postagetype_id     | integer    | null: false |
 | prefecture_id      | integer    | null: false |
-| preparation_day_id | integer    | null: false |
+| preparationday_id  | integer    | null: false |
 | user               | references | null: false |
  
 ### Association
@@ -38,9 +38,9 @@
 - has_one :history
 - belongs_to_active_hash :category_id
 - belongs_to_active_hash :condition_id
-- belongs_to_active_hash :postage_type_id
+- belongs_to_active_hash :postagetype_id
 - belongs_to_active_hash :prefectures_id
-- belongs_to_active_hash :preparation_day_id
+- belongs_to_active_hash :preparationday_id
 
 ## historys テーブル
 
