@@ -20,7 +20,5 @@ class Item < ApplicationRecord
     validates :prefecture_id,  numericality: { other_than: 1, message: "can't be blank" }
     validates :preparationday_id, numericality: { other_than: 1, message: "can't be blank" }
   end
-  validates :price, numericality: { with: /\A[0-9]+\z/, message: 'is invalid. Input half-width characters' }
-  validates :price,
-            numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999, message: 'is out of setting range' }
-end
+  validates :price, presence: true, numericality: {only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999, message: 'is out of setting range' }
+  end

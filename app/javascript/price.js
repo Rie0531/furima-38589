@@ -1,5 +1,4 @@
 function tax (){
-  console.log("イベント発火");
   const itemPrice  = document.getElementById("item-price");
   itemPrice.addEventListener("keyup", () => {
     const fee = Math.floor(itemPrice.value * 0.1);
