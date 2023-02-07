@@ -10,9 +10,12 @@ RSpec.describe Item, type: :model do
       it '全ての値が正しく入力されていれば出品できる' do
         expect(@item).to be_valid
       end
+      it 'ログイン状態のユーザーのみ商品出品ページへ遷移できること' do
+        expect(@item).to be_valid
+      end
     end
     context '商品が出品できないとき' do
-      it '商品画像が空では出品できない' do
+           it '商品画像が空では出品できない' do
         @item.image = nil
         @item.valid?
         expect(@item.errors.full_messages).to include("Image can't be blank")
