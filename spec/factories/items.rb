@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :item do
     association :user
-
+    image {Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec/fixtures/犬.sample.png'))}
     name { Faker::Lorem.sentence }
     price { Faker::Number.between(from: 300, to: 9_999_999) }
     explanation { Faker::Lorem.sentence }
