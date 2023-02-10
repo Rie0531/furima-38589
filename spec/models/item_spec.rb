@@ -15,7 +15,7 @@ RSpec.describe Item, type: :model do
       end
     end
     context '商品が出品できないとき' do
-           it '商品画像が空では出品できない' do
+      it '商品画像が空では出品できない' do
         @item.image = nil
         @item.valid?
         expect(@item.errors.full_messages).to include("Image can't be blank")
@@ -23,7 +23,7 @@ RSpec.describe Item, type: :model do
       it 'userが紐付いていなければ出品できない' do
         @item.user = nil
         @item.valid?
-        expect(@item.errors.full_messages).to include("User must exist")
+        expect(@item.errors.full_messages).to include('User must exist')
       end
       it '商品名が必須である' do
         @item.name = ''
@@ -63,22 +63,22 @@ RSpec.describe Item, type: :model do
       it '価格の情報が必須であること' do
         @item.price = ''
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price can't be blank", "Price is out of setting range")
+        expect(@item.errors.full_messages).to include("Price can't be blank", 'Price is out of setting range')
       end
       it '価格は、¥300以下では保存できない' do
         @item.price = Faker::Number.between(to: 299)
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price is out of setting range")
+        expect(@item.errors.full_messages).to include('Price is out of setting range')
       end
       it '価格は、¥9,999,999以上では保存できない' do
         @item.price = 10_000_000
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price is out of setting range")
+        expect(@item.errors.full_messages).to include('Price is out of setting range')
       end
       it '価格は半角数値のみ保存可能であること。' do
         @item.price = '１０００'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price is out of setting range")
+        expect(@item.errors.full_messages).to include('Price is out of setting range')
       end
     end
   end
