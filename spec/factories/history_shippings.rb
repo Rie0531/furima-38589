@@ -1,7 +1,5 @@
 FactoryBot.define do
   factory :history_shipping do
-    user_id { '1' }
-    item_id { '1' }
     token { 'tok_abcdefghijk00000000000000000' }
     postal_code { Faker::Number.decimal_part(digits: 3) + '-' + Faker::Number.decimal_part(digits: 4) }
     prefecture_id { Faker::Number.between(from: 2, to: 48) }

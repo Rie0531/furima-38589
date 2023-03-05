@@ -3,7 +3,9 @@ require 'rails_helper'
 RSpec.describe HistoryShipping, type: :model do
 
   before do
-    @history_shipping = FactoryBot.build(:history_shipping)
+    item = FactoryBot.create(:item)
+    user = FactoryBot.create(:user)
+    @history_shipping = FactoryBot.build(:history_shipping, item_id: item.id, user_id: user.id)
   end
   describe '出品商品の購入' do
     context '商品が購入できる時' do
@@ -65,6 +67,21 @@ RSpec.describe HistoryShipping, type: :model do
         @history_shipping.telephone = '090-1234-5678'
         @history_shipping.valid?
         expect(@history_shipping.errors.full_messages).to include("Telephone can't be blank")
+      end
+      it '電話番号が9桁以下では購入できない' do
+        @history_shipping.telephone = '012345678'
+        @history_shipping.valid?
+        expect(@history_shipping.errors.full_messages).to include("Telephone can't be blank")
+      end
+      it '電話番号が12桁以上では購入できない' do
+        @history_shipping.telephone = '012345678901'
+        @history_shipping.valid?
+        expect(@history_shipping.errors.full_messages).to include("Telephone can't be blank")
+      end
+      it 'tokenが空では購入できない' do
+        @history_shipping.token = ''
+        @history_shipping.valid?
+        expect(@history_shipping.errors.full_messages).to include("Token can't be blank")
       end
     end
   end

@@ -13,7 +13,7 @@ class HistoryShipping
     validates :token
   end
 
-  validates :telephone, format: { with: /\A0\d{9,10}\z/, message: "can't be blank" }
+  validates :telephone, format: { with: /\A\d{10,11}\z/, message: "can't be blank" }
 
   def save
     history = History.create(user_id: user_id, item_id: item_id)
@@ -21,3 +21,4 @@ class HistoryShipping
                     telephone: telephone, history_id: history.id)
   end
 end
+
