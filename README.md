@@ -42,7 +42,7 @@
 - belongs_to_active_hash :prefectures_id
 - belongs_to_active_hash :preparationday_id
 
-## historys テーブル
+## histories テーブル
 
 | Column        | Type       | Options                        |
 | ------------- | ---------- | ------------------------------ |
@@ -53,9 +53,9 @@
 
 - belongs_to :user
 - belongs_to :item
-- has_one :shipping_data
+- has_one :shipping
 
-## shipping_datas テーブル
+## shippings テーブル
 
 | Column        | Type       | Options                        |
 | ------------- | ---------- | ------------------------------ |
@@ -70,4 +70,4 @@
 ### Association
 
 - belongs_to :history
-- belongs_to_active_hash :prefectures_id
+- belongs_to_active_hash :prefecture_id

@@ -7,11 +7,14 @@ class Item < ApplicationRecord
   belongs_to :preparationday
 
   belongs_to :user
+  has_one :history
   has_one_attached :image
 
   with_options presence: true do
     validates :name
-
+    validates :price,
+              numericality: { only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999,
+                              message: 'is out of setting range' }
     validates :explanation
     validates :image
     validates :category_id, numericality: { other_than: 1, message: "can't be blank" }
@@ -20,6 +23,4 @@ class Item < ApplicationRecord
     validates :prefecture_id,  numericality: { other_than: 1, message: "can't be blank" }
     validates :preparationday_id, numericality: { other_than: 1, message: "can't be blank" }
   end
-  validates :price, presence: true,
-                    numericality: { only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999, message: 'is out of setting range' }
 end
